@@ -1,0 +1,29 @@
+{
+    "functions": [
+        {
+            "name": "Mimicus",
+            "options": [],
+            "extensions": [
+                {"extension": "pdf"}
+            ]
+        },
+        {
+            "name": "Barnum-Train",
+            "options": [],
+            "extensions": [
+                {
+                    "extension": "zip"
+                }
+            ]
+        },
+        {
+            "name": "Barnum-Eval",
+            "options": [],
+            "extensions": [
+                {
+                    "extension": "zip"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+/input/input.json
+/input/*.zip
+/output/output.json
+/output/*.pdf
+/output/*.zip

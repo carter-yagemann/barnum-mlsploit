@@ -1,0 +1,7 @@
+{
+    "name": "Mimicus",
+    "num_files": 2,
+    "files": ["example-a.pdf", "example-b.pdf"],
+    "options": {},
+    "tags": []
+}

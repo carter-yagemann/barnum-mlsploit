@@ -1,0 +1,1 @@
+{"name": "Barnum-Train", "files": ["model.zip", "trace-c.zip", "trace-d.zip"], "files_extra": ["model.zip"], "files_modified": [], "tags": [{}, {"pred_label": "malicious", "real_label": "malicious"}, {"pred_label": "malicious", "real_label": "benign"}]}

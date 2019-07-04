@@ -1,0 +1,1 @@
+{"name": "Barnum-Eval", "files": ["trace-a.zip", "trace-b.zip"], "files_extra": [], "files_modified": [], "tags": [{"pred_label": "malicious", "real_label": "benign"}, {"pred_label": "malicious", "real_label": "malicious"}]}

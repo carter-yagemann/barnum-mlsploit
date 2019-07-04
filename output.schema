@@ -1,0 +1,28 @@
+{
+    "functions": [
+        {
+            "name": "Mimicus",
+            "output_tags": [],
+            "has_modified_files": true,
+            "has_extra_files": false
+        },
+        {
+            "name": "Barnum-Train",
+            "output_tags": [
+                {"name": "real_label", "type": "str"},
+                {"name": "pred_label", "type": "str"}
+            ],
+            "has_modified_files": false,
+            "has_extra_files": true
+        },
+        {
+            "name": "Barnum-Eval",
+            "option_tags": [
+                {"name": "real_label", "type": "str"},
+                {"name": "pred_label", "type": "str"}
+            ],
+            "has_modified_files": false,
+            "has_extra_files": false
+        }
+    ]
+}

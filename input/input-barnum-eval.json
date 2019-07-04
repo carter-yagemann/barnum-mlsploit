@@ -1,0 +1,8 @@
+{
+    "name": "Barnum-Eval",
+    "num_files": 5,
+    "files": ["model.zip", "trace-a.zip", "trace-b.zip", "trace-c.zip", "trace-d.zip"],
+    "options": {},
+    "tags": []
+}
+
