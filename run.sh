@@ -58,7 +58,10 @@ if [[ $NAME == "Mimicus" ]]; then
     cp /app/mimicus/results/FTC_mimicry/*.pdf "$OUTPUT"
 
     # Write output.json
-    echo -n '{"name": "Mimicus", "tags": [], "files": [' > "$RESULT"
+    echo -n '{"name": "Mimicus", "tags": [' > "$RESULT"
+    for PDF in `jq -r ".files[]" "$CONFIG"`; do echo -n '{},' >> "$RESULT"; done
+    sed -i 's/,$//' "$RESULT"
+    echo -n '], "files": [' >> "$RESULT"
     for PDF in `jq -r ".files[]" "$CONFIG"`; do echo -n "\"${PDF}\"," >> "$RESULT"; done
     sed -i 's/,$//' "$RESULT"
     echo -n '], "files_extra": [], "files_modified": [' >> "$RESULT"
