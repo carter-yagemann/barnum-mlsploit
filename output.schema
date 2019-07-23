@@ -2,7 +2,9 @@
     "functions": [
         {
             "name": "Mimicus",
-            "output_tags": [],
+            "output_tags": [
+                {"name": "mimicus", "type": "str"}
+            ],
             "has_modified_files": true,
             "has_extra_files": false
         },

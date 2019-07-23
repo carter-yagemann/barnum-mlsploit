@@ -59,7 +59,7 @@ if [[ $NAME == "Mimicus" ]]; then
 
     # Write output.json
     echo -n '{"name": "Mimicus", "tags": [' > "$RESULT"
-    for PDF in `jq -r ".files[]" "$CONFIG"`; do echo -n '{},' >> "$RESULT"; done
+    for PDF in `jq -r ".files[]" "$CONFIG"`; do echo -n '{"mimicus": ""},' >> "$RESULT"; done
     sed -i 's/,$//' "$RESULT"
     echo -n '], "files": [' >> "$RESULT"
     for PDF in `jq -r ".files[]" "$CONFIG"`; do echo -n "\"${PDF}\"," >> "$RESULT"; done
