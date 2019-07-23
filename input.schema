@@ -9,7 +9,12 @@
         },
         {
             "name": "Barnum-Train",
-            "options": [],
+            "options": [
+                {
+                    "name": "epoch", "type": "int",
+                    "required": true
+                }
+            ],
             "extensions": [
                 {
                     "extension": "zip"

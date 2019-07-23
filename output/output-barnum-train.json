@@ -1,1 +1,1 @@
-{"name": "Barnum-Train", "files": ["model.zip", "trace-c.zip", "trace-d.zip"], "files_extra": ["model.zip"], "files_modified": [], "tags": [{}, {"pred_label": "malicious", "real_label": "malicious"}, {"pred_label": "malicious", "real_label": "benign"}]}
+{"name": "Barnum-Train", "files_modified": [], "files": ["model.zip", "trace-a.zip", "trace-d.zip", "trace-c.zip"], "tags": [{}, {"real_label": "benign", "pred_label": "benign"}, {"real_label": "benign", "pred_label": "benign"}, {"real_label": "malicious", "pred_label": "malicious"}], "files_extra": ["model.zip"]}

@@ -2,6 +2,6 @@
     "name": "Barnum-Train",
     "num_files": 3,
     "files": ["trace-a.zip", "trace-d.zip", "trace-c.zip"],
-    "options": {},
+    "options": {"epoch": 1},
     "tags": []
 }

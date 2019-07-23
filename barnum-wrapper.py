@@ -3,6 +3,7 @@ import json
 import os
 import sys
 import subprocess
+import shutil
 from tempfile import mkdtemp
 from zipfile import ZipFile
 
@@ -34,6 +35,8 @@ def evaluation(job):
         if filename == 'model.zip':
             continue  # model file is special, processed later
         fullpath = os.path.join('/mnt/input', filename)
+        # any files we tag must be in the output directory, even if content is unchanged
+        shutil.copy(fullpath, '/mnt/output')
         try:
             with ZipFile(fullpath, 'r') as ifile:
                 trace_name = ifile.namelist()[0].replace('/', "")
@@ -99,13 +102,13 @@ def evaluation(job):
             else:
                 trace_info[name]['pred'] = 'benign'
 
-    res = {"name": "Barnum-Train", "files": [], "files_extra": [], "files_modified": [], "tags": []}
+    res = {"name": "Barnum-Eval", "files": [], "files_extra": [], "files_modified": [], "tags": []}
     for info in trace_info:
         res["files"].append(trace_info[info]['zip'])
         if 'pred' in trace_info[info].keys():
             res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": trace_info[info]['pred']})
         else:
-            res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": ""})
+            res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": trace_info[info]['tag']})
 
     with open('/mnt/output/output.json', 'w') as ofile:
         json.dump(res, ofile)
@@ -133,6 +136,8 @@ def train(job):
     trace_info = dict()
     for filename in job['files']:
         fullpath = os.path.join('/mnt/input', filename)
+        # any files we tag must be in the output directory, even if content is unchanged
+        shutil.copy(fullpath, '/mnt/output')
         try:
             with ZipFile(fullpath, 'r') as ifile:
                 trace_name = ifile.namelist()[0].replace('/', "")
@@ -167,7 +172,7 @@ def train(job):
     cmd = ['/usr/bin/python3', '/app/barnum/lstm.py', '-p', '--eval-dir', eval_dir, '--train-size', str(num_b_train),
            '--test-size-benign', str(num_b_test), '--test-size-malicious', str(num_m),
            '--save-model', os.path.join(model_dir, 'lstm.json'), '--save-weights', os.path.join(model_dir, 'lstm.h5'),
-           '--checkpoint', '60', '--checkpoint-best', traces_dir]
+           '--checkpoint', '60', '--checkpoint-best', '-e', str(job['options']['epoch']), traces_dir]
     ret = subprocess.call(cmd, stdout=sys.stdout, stderr=sys.stderr)
     if ret != 0:
         sys.stderr.write("lstm.py returned error code\n")
@@ -205,7 +210,7 @@ def train(job):
         if 'pred' in trace_info[info].keys():
             res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": trace_info[info]['pred']})
         else:
-            res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": ""})
+            res["tags"].append({"real_label": trace_info[info]['tag'], "pred_label": trace_info[info]['tag']})
 
     with open('/mnt/output/output.json', 'w') as ofile:
         json.dump(res, ofile)
